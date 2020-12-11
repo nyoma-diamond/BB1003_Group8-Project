@@ -147,20 +147,20 @@ def renameFasta(inputFilePath, outputFilePath):
 	newFile.write(s)
 
 # test code
-#buildTree(UPGMA(fileToMatrix("rosalind_ba7d.txt")))
-#buildTree(UPGMA(fileToMatrix("UPGMA.txt")))
+#buildTree(UPGMA(fileToMatrix("data/rosalind_ba7d.txt")))
+#buildTree(UPGMA(fileToMatrix("data/UPGMA.txt")))
 
-renameFasta("h1raw.fasta", "h1.fasta")
-UPGMA(getBLOSUMDistanceMatrix(msa("h1.fasta")))
-tree = Phylo.read("h1.dnd", "newick")
+renameFasta("data/h1raw.fasta", "data/h1.fasta")
+UPGMA(getBLOSUMDistanceMatrix(msa("data/h1.fasta")))
+tree = Phylo.read("data/h1.dnd", "newick")
 Phylo.draw(tree)
 
-#renameFasta("h4raw.fasta", "h4.fasta")
-#UPGMA(getBLOSUMDistanceMatrix(msa("h4.fasta")))
+#renameFasta("data/h4raw.fasta", "data/h4.fasta")
+#UPGMA(getBLOSUMDistanceMatrix(msa("data/h4.fasta")))
 
-#renameFasta("megaTestraw.fasta", "megaTest.fasta")
-#UPGMA(getBLOSUMDistanceMatrix(msa("megaTest.fasta")))
-#tree = Phylo.read("megaTest.dnd", "newick")
+#renameFasta("data/megaTestraw.fasta", "data/megaTest.fasta")
+#UPGMA(getBLOSUMDistanceMatrix(msa("data/megaTest.fasta")))
+#tree = Phylo.read("data/megaTest.dnd", "newick")
 #Phylo.draw(tree)
 
 
