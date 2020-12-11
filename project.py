@@ -16,15 +16,6 @@ class UPGMANode:
 		self.children = []
 		self.parent = None
 
-	def addChild(self, child):
-		self.children.append(child)
-
-	def setParent(self, parent):
-		self.parent = parent
-
-	def setAge(self, age):
-		self.age = age
-
 	def countDescendants(self):
 		if len(self.children) == 0:
 			return 1
@@ -84,12 +75,12 @@ def UPGMA(distances):
 
 		nodes[Cnew] = UPGMANode(Cnew) #add a new node labeled by cluster Cnew to T (nodes)
 
-		nodes[Cnew].addChild(nodes[Ci]) #connect node Cnew to Ci and Cj by directed edges
-		nodes[Cnew].addChild(nodes[Cj])
-		nodes[Ci].setParent(nodes[Cnew])
-		nodes[Cj].setParent(nodes[Cnew])
+		nodes[Cnew].children.append(nodes[Ci]) #connect node Cnew to Ci and Cj by directed edges
+		nodes[Cnew].children.append(nodes[Cj])
+		nodes[Ci].parent = nodes[Cnew]
+		nodes[Cj].parent = nodes[Cnew]
 
-		nodes[Cnew].setAge(distances[Ci][Cj]) #Age(Cnew) <- D[C1,C2] (supposed to divide by 2 but there's no mathematical reason two. The relative proportions are the same)
+		nodes[Cnew].age = distances[Ci][Cj] #Age(Cnew) <- D[C1,C2] (supposed to divide by 2 but there's no mathematical reason two. The relative proportions are the same)
 
 		distances = distances.drop(Ci, axis=0) #remove the rows and columns of D corresponding to Ci and Cj
 		distances = distances.drop(Cj, axis=0)
